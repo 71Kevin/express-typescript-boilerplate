@@ -62,3 +62,7 @@ typings/
 
 # dist directory
 dist/
+
+# others
+package-lock.json
+yarn.lock
