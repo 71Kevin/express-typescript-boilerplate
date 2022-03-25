@@ -1,9 +1,19 @@
-import { logger } from './logger';
+import {
+    logger
+} from './logger';
 
-const boilerplateClient = {
-    boilerplateTest: async (req, res) => {
+const boilerplate = {
+    template: async (req: any, res: {
+        status: (arg0: number) => {
+            (): any;
+            new(): any;
+            send: {
+                (arg0: string): void;new(): any;
+            };
+        };
+    }) => {
         try {
-            logger.info('boilerplate confirmed');
+            logger.info('POST template');
             res.status(200).send('ok');
         } catch (e) {
             console.log(e.message);
@@ -12,4 +22,4 @@ const boilerplateClient = {
     },
 };
 
-export default boilerplateClient;
+export default boilerplate;

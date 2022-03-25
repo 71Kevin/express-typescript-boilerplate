@@ -1,14 +1,20 @@
 import * as express from 'express';
-import { logger } from '../lib/logger';
+import {
+    logger
+} from '../lib/logger';
 import router from './router';
 
 class Server {
-    public express;
+    public express: {
+        use: (arg0: any) => void;listen: (arg0: string, arg1: () => void) => void;
+    };
     public constructor() {
         this.express = express();
     }
     middlewares() {
-        this.express.use(express.json({ limit: '200MB' }));
+        this.express.use(express.json({
+            limit: '200MB'
+        }));
     }
 
     routes() {
