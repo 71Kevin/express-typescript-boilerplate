@@ -6,7 +6,11 @@ const customFormat = winston.format.combine(
     winston.format.timestamp(),
     winston.format.simple(),
     winston.format.printf((info) => {
-        const { timestamp, level, message } = info;
+        const {
+            timestamp,
+            level,
+            message
+        } = info;
 
         const ts = moment().tz('America/Sao_Paulo').format('YYYY/MM/DD HH:mm:ss.SSS');
         return `${ts} [${level}]: ${message}`;
@@ -22,18 +26,20 @@ const winstonLogger = winston.createLogger({
 });
 
 const logger = {
-    error: (message, ...args) => {
+    error: (message: any, ...args: any) => {
         winstonLogger.error(message);
     },
-    warn: (message, ...args) => {
+    warn: (message: any, ...args: any) => {
         winstonLogger.warn(message);
     },
-    info: (message, ...args) => {
+    info: (message: any, ...args: any) => {
         winstonLogger.info(message);
     },
-    debug: (message, ...args) => {
+    debug: (message: any, ...args: any) => {
         winstonLogger.debug(message);
     },
 };
 
-export { logger };
+export {
+    logger
+};
