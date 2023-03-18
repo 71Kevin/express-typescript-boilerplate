@@ -1,15 +1,15 @@
-FROM node:18
+FROM node:16-alpine
+
+WORKDIR /app
 
 COPY package*.json ./
 
-RUN npm i
+RUN npm ci --production
 
 COPY . .
-
-ADD . . 
 
 RUN npm run build
 
 EXPOSE 3000
 
-CMD npm run start
+CMD [ "npm", "run", "start" ]
