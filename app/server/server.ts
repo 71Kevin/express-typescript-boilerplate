@@ -6,22 +6,22 @@ class Server {
   private readonly app: Express;
   private readonly port: number;
 
-  public constructor(port: number) {
+  constructor(port: number) {
     this.port = port;
     this.app = express();
-    this.middlewares();
-    this.routes();
+    this.setupMiddlewares();
+    this.setupRoutes();
   }
 
-  private middlewares(): void {
+  private setupMiddlewares(): void {
     this.app.use(express.json({ limit: '200MB' }));
   }
 
-  private routes(): void {
+  private setupRoutes(): void {
     this.app.use(router);
   }
 
-  public listen(): void {
+  public start(): void {
     this.app.listen(this.port, () => {
       logger.info(`Server listening on port ${this.port}`);
     });
